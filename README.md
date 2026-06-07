@@ -1,4 +1,4 @@
-# Portfólio — Julia Lepiscopo
+# Portfólio - Julia Lepiscopo
 
 Portfólio pessoal desenvolvido em **React** + **Tailwind CSS**.
 
