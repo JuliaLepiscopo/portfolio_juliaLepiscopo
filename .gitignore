@@ -3,11 +3,15 @@ node_modules/
 .pnp
 .pnp.js
 
-# Build
+# Build / cache
 dist/
 dist-ssr/
 build/
+.vite/
 *.local
+
+# Deploy
+.vercel
 
 # Logs
 logs
