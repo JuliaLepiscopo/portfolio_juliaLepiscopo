@@ -1,6 +1,8 @@
 import bg from '../../IMG/background.png'
 import julia from '../../IMG/img_startPage.png'
 import SocialIcons from '../components/SocialIcons'
+import { motion } from 'framer-motion'
+import { reveal, fade } from '../lib/motion'
 
 export default function HeroSection() {
   return (
@@ -18,21 +20,28 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-black/30" />
 
       {/* PORTFOLIO gigante (atrás da foto) */}
-      <h2 className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
+      <motion.h2
+        {...reveal()}
+        className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center"
+      >
         <span className="whitespace-nowrap font-display leading-none text-accent text-[24vw]">
           PORTFOLIO
         </span>
-      </h2>
+      </motion.h2>
 
       {/* Foto recortada (frente) */}
-      <img
+      <motion.img
+        {...fade(0.2)}
         src={julia}
         alt="Julia Lepiscopo"
         className="absolute bottom-[-8vh] left-1/2 z-20 h-[135vh] max-w-none -translate-x-1/2 object-contain object-bottom"
       />
 
       {/* Conteúdo inferior */}
-      <div className="relative z-30 w-full px-6 pb-10">
+      <motion.div
+        {...reveal(0.35)}
+        className="relative z-30 w-full px-6 pb-10"
+      >
         <div className="mx-auto flex max-w-7xl items-end justify-between gap-6">
           {/* Esquerda: apresentação + social + nome */}
           <div className="max-w-xs">
@@ -51,7 +60,7 @@ export default function HeroSection() {
             "A motivação te faz começar. A disciplina te mantém no jogo. — Jim Ryun"
           </p>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }
