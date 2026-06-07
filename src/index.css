@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* ===== Design tokens do portfólio ===== */
+@theme {
+  --color-bg: #171717;           /* fundo sólido das sessões */
+  --color-bg-soft: #1f1f1f;
+  --color-accent: #910304;       /* vermelho exato dos detalhes */
+  --color-welcome: #848484;      /* cinza do card de boas-vindas */
+
+  --font-display: "Anton", "Inter", sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ===== Animação de entrada do card de boas-vindas ===== */
+@keyframes welcome-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-welcome {
+  animation: welcome-in 0.7s ease-out both;
+}
+
+/* ===== Batimento dos corações ===== */
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.2);
+  }
+  30% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.12);
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.6s ease-in-out infinite;
+}
+
+/* ===== Texto contornado (ex: FAVORITE PROJECT) ===== */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px #ffffff;
+  paint-order: stroke fill;
+}
+
+/* ===== Glassmorphism 3D / "Liquid Glass" ===== */
+.glass-badge {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(255, 255, 255, 0.06) 45%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 10px 24px -6px rgba(0, 0, 0, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.45),
+    inset 0 -6px 12px -6px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* brilho especular (reflexo no canto superior) */
+.glass-badge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    120% 75% at 28% 12%,
+    rgba(255, 255, 255, 0.55),
+    rgba(255, 255, 255, 0) 55%
+  );
+  pointer-events: none;
+}
+
+/* ===== Botão glassmorphism (vermelho translúcido) ===== */
+.glass-button {
+  background: linear-gradient(
+    135deg,
+    rgba(145, 3, 4, 0.62),
+    rgba(145, 3, 4, 0.34)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 10px 26px -8px rgba(0, 0, 0, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.glass-button:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(145, 3, 4, 0.78),
+    rgba(145, 3, 4, 0.46)
+  );
+  border-color: rgba(255, 255, 255, 0.42);
+}
