@@ -1,6 +1,8 @@
 import timenow from '../../IMG/img_timenow.png'
 import sfc from '../../IMG/img_sfc.png'
 import chinalink from '../../IMG/img_chinalink.png'
+import { motion } from 'framer-motion'
+import { reveal } from '../lib/motion'
 
 const experiences = [
   {
@@ -50,7 +52,10 @@ export default function ExperienceSection() {
       className="relative min-h-screen overflow-hidden bg-bg"
     >
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 py-28">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+        <motion.div
+          {...reveal()}
+          className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between"
+        >
           <h2 className="font-display text-6xl leading-[0.85] sm:text-7xl lg:text-8xl">
             WORK
             <br />
@@ -62,9 +67,12 @@ export default function ExperienceSection() {
             dedicação, não existe meio termo. Ou você faz uma coisa bem feita ou
             não faz. — Ayrton Senna"
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
+        <motion.div
+          {...reveal(0.15)}
+          className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center"
+        >
           {/* Lista de experiências */}
           <div className="max-w-xl space-y-7">
             {experiences.map((e) => (
@@ -88,7 +96,7 @@ export default function ExperienceSection() {
               <CompanyCard key={c.name} {...c} />
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

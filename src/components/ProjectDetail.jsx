@@ -1,4 +1,6 @@
 import { ExternalLink } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { reveal } from '../lib/motion'
 import BrowserFrame from './BrowserFrame'
 
 export default function ProjectDetail({
@@ -25,7 +27,8 @@ export default function ProjectDetail({
     >
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2">
         {/* Imagens do projeto */}
-        <div
+        <motion.div
+          {...reveal(0, 60)}
           className={`space-y-4 ${side === 'right' ? 'lg:order-2' : 'lg:order-1'}`}
         >
           {frame === 'browser' ? (
@@ -52,10 +55,13 @@ export default function ProjectDetail({
               />
             ))
           )}
-        </div>
+        </motion.div>
 
         {/* Texto */}
-        <div className={side === 'right' ? 'lg:order-1' : 'lg:order-2'}>
+        <motion.div
+          {...reveal(0.15)}
+          className={side === 'right' ? 'lg:order-1' : 'lg:order-2'}
+        >
           <h2 className="font-display text-5xl leading-[0.9] sm:text-6xl lg:text-7xl">
             <span className={outlined ? 'text-outline' : undefined}>
               {firstWord}
@@ -83,7 +89,7 @@ export default function ProjectDetail({
               {quote}
             </p>
           )}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -1,4 +1,6 @@
 import grad from '../../IMG/img_myGraduations.png'
+import { motion } from 'framer-motion'
+import { reveal, fade } from '../lib/motion'
 
 const graduations = [
   {
@@ -32,7 +34,8 @@ export default function GraduationsSection() {
       {/* Visual (desktop): círculo vermelho + foto à esquerda */}
       <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/2 md:block">
         <div className="absolute left-1/2 top-1/2 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent lg:h-[30rem] lg:w-[30rem]" />
-        <img
+        <motion.img
+          {...fade(0.2)}
           src={grad}
           alt="Julia Lepiscopo"
           className="absolute bottom-0 left-1/2 h-[86%] max-w-none -translate-x-1/2 object-contain object-bottom"
@@ -42,11 +45,14 @@ export default function GraduationsSection() {
       {/* Conteúdo (direita) */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 py-28">
         <div className="md:ml-auto md:w-[52%]">
-          <h2 className="font-display text-5xl leading-[0.85] sm:text-7xl lg:text-8xl">
+          <motion.h2
+            {...reveal()}
+            className="font-display text-5xl leading-[0.85] sm:text-7xl lg:text-8xl"
+          >
             MY
             <br />
             GRADUATIONS
-          </h2>
+          </motion.h2>
 
           {/* Foto no mobile */}
           <div className="relative my-10 flex justify-center md:hidden">
@@ -58,7 +64,7 @@ export default function GraduationsSection() {
             />
           </div>
 
-          <div className="mt-10 space-y-6">
+          <motion.div {...reveal(0.15)} className="mt-10 space-y-6">
             {graduations.map((g) => (
               <div key={g.title}>
                 <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
@@ -72,7 +78,7 @@ export default function GraduationsSection() {
                 </p>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

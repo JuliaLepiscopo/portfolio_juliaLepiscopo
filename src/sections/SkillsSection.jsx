@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+import { reveal } from '../lib/motion'
 import cakeIcon from '../../IMG/icon_cake.png'
 import cubeIcon from '../../IMG/icon_cube.png'
 import bookIcon from '../../IMG/icon_book.png'
@@ -22,7 +24,10 @@ export default function SkillsSection() {
     <section id="skills" className="relative min-h-screen overflow-hidden bg-bg">
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 py-28">
         {/* Título + citação */}
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <motion.div
+          {...reveal()}
+          className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
+        >
           <h2 className="font-display text-6xl leading-[0.85] sm:text-7xl lg:text-8xl">
             PERSONAL
             <br />
@@ -31,10 +36,13 @@ export default function SkillsSection() {
           <p className="max-w-md text-sm italic leading-relaxed text-white/60 sm:text-base lg:text-right">
             {QUOTE}
           </p>
-        </div>
+        </motion.div>
 
         {/* Painéis expansíveis (accordion) */}
-        <div className="mt-12 flex flex-col gap-3 lg:h-[26rem] lg:flex-row">
+        <motion.div
+          {...reveal(0.15)}
+          className="mt-12 flex flex-col gap-3 lg:h-[26rem] lg:flex-row"
+        >
           {skills.map((s) => (
             <div
               key={s.label}
@@ -52,7 +60,7 @@ export default function SkillsSection() {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -9,6 +9,8 @@ import lombreProject from '../../IMG/img_lombre_project.png'
 import aureaProject from '../../IMG/img_aureaVox_project.png'
 
 import ProjectDetail from '../components/ProjectDetail'
+import { motion } from 'framer-motion'
+import { reveal } from '../lib/motion'
 
 const gallery = [
   { id: 'fc-mobile', name: 'FC Mobile', thumb: fcThumb },
@@ -84,13 +86,19 @@ export default function ProjectsSection() {
         id="projetos"
         className="relative flex min-h-screen flex-col items-center justify-center bg-bg px-6 py-28"
       >
-        <h2 className="text-center font-display text-6xl leading-[0.9] sm:text-7xl lg:text-8xl">
+        <motion.h2
+          {...reveal()}
+          className="text-center font-display text-6xl leading-[0.9] sm:text-7xl lg:text-8xl"
+        >
           PROJECT
           <br />
           PORTFOLIO
-        </h2>
+        </motion.h2>
 
-        <div className="mt-14 grid w-full max-w-5xl grid-cols-2 gap-4 sm:grid-cols-4">
+        <motion.div
+          {...reveal(0.15)}
+          className="mt-14 grid w-full max-w-5xl grid-cols-2 gap-4 sm:grid-cols-4"
+        >
           {gallery.map((g) => (
             <a
               key={g.id}
@@ -108,7 +116,7 @@ export default function ProjectsSection() {
               </span>
             </a>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Páginas de detalhe */}
