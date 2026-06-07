@@ -1,4 +1,3 @@
-import skillsImg from '../../IMG/img_personalSkills.png'
 import cakeIcon from '../../IMG/icon_cake.png'
 import cubeIcon from '../../IMG/icon_cube.png'
 import bookIcon from '../../IMG/icon_book.png'
@@ -15,66 +14,44 @@ const skills = [
   { label: 'Treinar calistenia', icon: gymIcon },
 ]
 
-//   = espaço inquebrável para "— Bear Bryant" não se separar na quebra de linha
 const QUOTE =
-  '"A vontade de se preparar tem que ser maior do que a vontade de vencer. — Bear Bryant"'
+  '"A vontade de se preparar tem que ser maior do que a vontade de vencer. — Bear Bryant"'
 
 export default function SkillsSection() {
   return (
     <section id="skills" className="relative min-h-screen overflow-hidden bg-bg">
-      {/* Visual (desktop): citação + círculo vermelho + câmera + cubo */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 overflow-hidden md:block">
-        <p className="absolute right-8 top-32 z-20 max-w-[16rem] text-right text-sm leading-snug text-white/80">
-          {QUOTE}
-        </p>
-
-        <div className="flex h-full items-center justify-end pr-4">
-          {/* círculo como âncora da composição */}
-          <div className="relative h-[24rem] w-[24rem] rounded-full bg-accent lg:h-[30rem] lg:w-[30rem]">
-            {/* câmera ancorada no canto inferior-direito (braço sai pelo canto) */}
-            <img
-              src={skillsImg}
-              alt="Câmera fotográfica"
-              className="absolute bottom-0 right-0 z-10 h-[28rem] translate-x-[8%] translate-y-[7%] object-contain object-bottom lg:h-[34rem]"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Conteúdo (esquerda) */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 py-28">
-        <div className="md:w-1/2">
+      <div className="mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 py-28">
+        {/* Título + citação */}
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <h2 className="font-display text-6xl leading-[0.85] sm:text-7xl lg:text-8xl">
             PERSONAL
             <br />
             SKILLS
           </h2>
+          <p className="max-w-md text-sm italic leading-relaxed text-white/60 sm:text-base lg:text-right">
+            {QUOTE}
+          </p>
+        </div>
 
-          <div className="mt-10 max-w-md divide-y divide-white/10">
-            {skills.map(({ label, icon }) => (
-              <div key={label} className="flex items-center gap-4 py-4">
+        {/* Painéis expansíveis (accordion) */}
+        <div className="mt-12 flex flex-col gap-3 lg:h-[26rem] lg:flex-row">
+          {skills.map((s) => (
+            <div
+              key={s.label}
+              className="group/panel relative flex flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition-all duration-500 ease-out hover:border-accent/50 hover:bg-white/[0.06] lg:hover:flex-[3]"
+            >
+              <div className="flex items-center gap-4 lg:flex-col">
                 <img
-                  src={icon}
+                  src={s.icon}
                   alt=""
-                  className="h-11 w-11 shrink-0 object-contain"
+                  className="h-14 w-14 shrink-0 object-contain transition duration-300 lg:group-hover/panel:scale-110"
                 />
-                <p className="text-base text-white/90">{label}</p>
+                <span className="whitespace-nowrap text-sm text-white opacity-100 transition-opacity duration-300 lg:opacity-0 lg:group-hover/panel:opacity-100">
+                  {s.label}
+                </span>
               </div>
-            ))}
-          </div>
-
-          {/* Visual no mobile */}
-          <div className="md:hidden">
-            <div className="relative mt-14 flex justify-center">
-              <div className="absolute top-1/2 h-60 w-60 -translate-y-1/2 rounded-full bg-accent" />
-              <img
-                src={skillsImg}
-                alt="Câmera fotográfica"
-                className="relative h-64 object-contain"
-              />
             </div>
-            <p className="mt-6 text-center text-sm text-white/80">{QUOTE}</p>
-          </div>
+          ))}
         </div>
       </div>
     </section>
