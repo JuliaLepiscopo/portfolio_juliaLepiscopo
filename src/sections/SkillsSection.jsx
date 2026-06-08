@@ -29,9 +29,9 @@ export default function SkillsSection() {
           className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
         >
           <h2 className="font-display text-6xl leading-[0.85] sm:text-7xl lg:text-8xl">
-            PERSONAL
+            HOBBIES
             <br />
-            SKILLS
+            INTERESTS
           </h2>
           <p className="max-w-md text-sm italic leading-relaxed text-white/60 sm:text-base lg:text-right">
             {QUOTE}
