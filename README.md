@@ -26,14 +26,6 @@ O acompanhamento do desenvolvimento é feito por **milestones**, **issues** e **
 - [Vite](https://vitejs.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 
-## Como rodar (em breve)
-
-> O scaffold do projeto será criado na milestone de **Setup & Infraestrutura**.
-
-```bash
-npm install
-npm run dev
-```
 
 ## Acompanhamento
 
